@@ -5,5 +5,6 @@
                         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="hola amiguis" VerticalAlignment="Top" Height="117" Width="442" FontSize="72"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="117" Width="442" FontSize="72" Margin="22,122,0,0"><Run Language="es-ve" Text="mola!!"/></TextBlock>
     </Grid>
 </Controls:MetroWindow>
