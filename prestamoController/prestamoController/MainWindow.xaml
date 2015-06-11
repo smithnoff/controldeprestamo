@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="hola" VerticalAlignment="Top" Height="117" Width="220" FontSize="72"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="hola amiguis" VerticalAlignment="Top" Height="117" Width="442" FontSize="72"/>
     </Grid>
 </Window>
