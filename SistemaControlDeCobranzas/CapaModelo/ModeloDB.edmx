@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbControlCobranzasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="pkPersonaID" />
+          </Key>
+          <Property Name="pkPersonaID" Type="int" Nullable="false" />
+          <Property Name="asNombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="asApellido" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rolUsuario">
+          <Key>
+            <PropertyRef Name="pkRolUsuarioID" />
+          </Key>
+          <Property Name="pkRolUsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asDescripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="pkUsuariosID" />
+          </Key>
+          <Property Name="pkUsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="asPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fkPersonaID" Type="int" />
+          <Property Name="fkRolUsuarioID" Type="int" />
+        </EntityType>
+        <Association Name="FK_usuarios_personas">
+          <End Role="personas" Type="Self.personas" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="pkPersonaID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkPersonaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_rolUsuario">
+          <End Role="rolUsuario" Type="Self.rolUsuario" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolUsuario">
+              <PropertyRef Name="pkRolUsuarioID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkRolUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbControlCobranzasModelStoreContainer">
+          <EntitySet Name="personas" EntityType="Self.personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rolUsuario" EntityType="Self.rolUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_usuarios_personas" Association="Self.FK_usuarios_personas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_rolUsuario" Association="Self.FK_usuarios_rolUsuario">
+            <End Role="rolUsuario" EntitySet="rolUsuario" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbControlCobranzasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="pkPersonaID" />
+          </Key>
+          <Property Name="pkPersonaID" Type="Int32" Nullable="false" />
+          <Property Name="asNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_personas" FromRole="personas" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="rolUsuario">
+          <Key>
+            <PropertyRef Name="pkRolUsuarioID" />
+          </Key>
+          <Property Name="pkRolUsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_rolUsuario" FromRole="rolUsuario" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="pkUsuariosID" />
+          </Key>
+          <Property Name="pkUsuariosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fkPersonaID" Type="Int32" />
+          <Property Name="fkRolUsuarioID" Type="Int32" />
+          <NavigationProperty Name="persona" Relationship="Self.FK_usuarios_personas" FromRole="usuarios" ToRole="personas" />
+          <NavigationProperty Name="rolUsuario" Relationship="Self.FK_usuarios_rolUsuario" FromRole="usuarios" ToRole="rolUsuario" />
+        </EntityType>
+        <Association Name="FK_usuarios_personas">
+          <End Role="personas" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="pkPersonaID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkPersonaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_rolUsuario">
+          <End Role="rolUsuario" Type="Self.rolUsuario" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolUsuario">
+              <PropertyRef Name="pkRolUsuarioID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkRolUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbControlCobranzasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="personas" EntityType="Self.persona" />
+          <EntitySet Name="rolUsuarios" EntityType="Self.rolUsuario" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_usuarios_personas" Association="Self.FK_usuarios_personas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_rolUsuario" Association="Self.FK_usuarios_rolUsuario">
+            <End Role="rolUsuario" EntitySet="rolUsuarios" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbControlCobranzasModelStoreContainer" CdmEntityContainer="dbControlCobranzasEntities">
+          <EntitySetMapping Name="personas">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.persona">
+              <MappingFragment StoreEntitySet="personas">
+                <ScalarProperty Name="pkPersonaID" ColumnName="pkPersonaID" />
+                <ScalarProperty Name="asNombre" ColumnName="asNombre" />
+                <ScalarProperty Name="asApellido" ColumnName="asApellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolUsuarios">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.rolUsuario">
+              <MappingFragment StoreEntitySet="rolUsuario">
+                <ScalarProperty Name="pkRolUsuarioID" ColumnName="pkRolUsuarioID" />
+                <ScalarProperty Name="asDescripcion" ColumnName="asDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.usuario">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="pkUsuariosID" ColumnName="pkUsuariosID" />
+                <ScalarProperty Name="asUsername" ColumnName="asUsername" />
+                <ScalarProperty Name="asPassword" ColumnName="asPassword" />
+                <ScalarProperty Name="fkPersonaID" ColumnName="fkPersonaID" />
+                <ScalarProperty Name="fkRolUsuarioID" ColumnName="fkRolUsuarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
