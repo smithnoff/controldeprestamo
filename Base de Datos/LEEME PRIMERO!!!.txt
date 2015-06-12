@@ -1,0 +1,19 @@
+Muchacho aqui hice una base de datos con 3 
+tablas sencillas de Usuario, Persona y Rol
+
+los archivos que estan en esta carpeta (.mdf y .ldf) tienen que copiarlos
+en:
+
+C:\Program Files\Microsoft SQL Server\MSSQL12.SQLSERVERLOCAL\MSSQL\DATA
+
+pero primero detienen el servidor en el administrador de configuracion
+del sql server(en buscar ponen sql y les aparece) despues que peguen lo 
+vuelven a iniciar cuando instalan el SQL server tienen que cambiar el 
+idioma del OS a español configuren todo lo que les ponen por defecto y 
+no cambien el nombre del server que te dan por defectos pa que no de rollos....
+
+deberia aparecerles cuando inician por el server manager en la carpeta
+base de datos la base de datos que pegaron y alli tiene el diagrama entidad relacion
+en las subcarpetas 
+
+...cualquier cosa me avisan (Y)
