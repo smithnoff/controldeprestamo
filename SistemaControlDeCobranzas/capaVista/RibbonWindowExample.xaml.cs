@@ -18,12 +18,17 @@ namespace capaVista
     /// <summary>
     /// Interaction logic for RibbonWindowExample.xaml
     /// </summary>
-    public partial class RibbonWindowExample : Window
+    public partial class RibbonWindowExample : RibbonWindow
     {
         
         public RibbonWindowExample()
         {
             InitializeComponent();
+        }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hola Aqui Estoy");
         }
     }
 }
