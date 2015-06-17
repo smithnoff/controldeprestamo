@@ -10,11 +10,7 @@
         <Custom:Ribbon x:Name="cintaRibbon" Title="">
             <Custom:RibbonTab Header="RibbonTab" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="592">
                 <Custom:RibbonGroup Header="RibbonGroup 1" Height="88" Margin="0" VerticalAlignment="Top">
-                    <Custom:RibbonButton Content="RibbonButton" Margin="9,10,-9,-62" Width="60">
-                        <Custom:RibbonButton.Background>
-                            <ImageBrush ImageSource="Images/Actions-document-save-icon.png" Stretch="Uniform"/>
-                        </Custom:RibbonButton.Background>
-                    </Custom:RibbonButton>
+                    <Custom:RibbonButton Label="Guardar" LargeImageSource="Images/Actions-document-save-icon.png" Content="RibbonButton" Margin="9,10,-9,-14" Width="60" Height="53" VerticalAlignment="Top"/>
                 </Custom:RibbonGroup>
                 <Custom:RibbonGroup Header="RibbonGroup 2" Height="88" Margin="0" VerticalAlignment="Top"/>
 
