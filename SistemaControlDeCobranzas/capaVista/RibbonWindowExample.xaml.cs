@@ -30,5 +30,15 @@ namespace capaVista
         {
             MessageBox.Show("Hola Aqui Estoy");
         }
+
+        private void btImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            GridImprimir.Visibility = Visibility.Visible;
+        }
+
+        private void closeImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            GridImprimir.Visibility = Visibility.Collapsed;
+        }
     }
 }
