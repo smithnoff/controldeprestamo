@@ -5,7 +5,7 @@
                       xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="capaVista.MainWindow"
                       Title="Sistema de prestamos"
                       Height="350"
-                      Width="525" WindowStartupLocation="CenterScreen" ShowMinButton="False" ShowActivated="False" ShowIconOnTitleBar="False" ShowMaxRestoreButton="False">
+                      Width="525" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False">
     <Grid Background="#FFE9EAEC">
         <Rectangle Fill="#0083b9" HorizontalAlignment="Left" Width="150"/>
         <Polygon
@@ -26,10 +26,10 @@
         </Polygon>
         <Label Content="Credenciales, por favor" HorizontalAlignment="Left" Margin="180,19,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="18" FontFamily="Arial Narrow"/>
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="180,72,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" BorderThickness="1" CaretBrush="#FF086F9E" CharacterCasing="Upper" Foreground="#FF8B8B8B"/>
+        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Usuario" HorizontalAlignment="Left" Height="23" Margin="180,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" BorderThickness="1" CaretBrush="#FF086F9E" CharacterCasing="Upper" Foreground="#FF8B8B8B"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="180,140,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
-        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" Background="#FF0083B9" Foreground="#FFFFF9F9" FontSize="18" BorderBrush="#FF086F9E" Click="Button_Click"/>
+       <PasswordBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña"  HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" Background="#FF0083B9" Foreground="#FFFFF9F9" FontSize="18" BorderBrush="#FF086F9E"/>
        
     </Grid>
 </Controls:MetroWindow>
