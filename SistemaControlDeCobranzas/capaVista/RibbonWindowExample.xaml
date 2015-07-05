@@ -1,12 +1,8 @@
-﻿<ribbon:RibbonWindow
+﻿<ribbon:RibbonWindow x:Class="capaVista.RibbonWindowExample"
                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
-                     xmlns:CapaModelo="clr-namespace:CapaModelo;assembly=CapaModelo" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="capaVista.RibbonWindowExample"
-                     Title="MainWindow" x:Name="RibbonWindow" Width="640" Height="480" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="RibbonWindow_Loaded">
-
-
-
+                     Title="MainWindow" x:Name="RibbonWindow" Width="640" Height="480" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Grid Margin="0">
 
@@ -47,11 +43,9 @@
                 </ribbon:RibbonTab>
             </ribbon:Ribbon>
         </Grid>
-        <Grid x:Name="GridImprimir" Margin="5,140,5,15" Background="#99000000">
+        <Grid x:Name="GridImprimir" Margin="5,140,5,15" Background="#99000000" Visibility="Collapsed">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Margin="196,97,138,117" FontSize="36" Foreground="#E5FFF8F8" Width="288"><Run Language="es-ve" Text="Aqui la Impresion"/></TextBlock>
             <Button x:Name="closeImprimir" Content="X" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Width="24" Height="20" FontSize="9" Click="closeImprimir_Click"/>
-            <DataGrid x:Name="dgprueba" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" Height="184" Width="517"/>
-
-
         </Grid>
     </Grid>
 </ribbon:RibbonWindow>

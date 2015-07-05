@@ -4,166 +4,82 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="dbControlCobranzasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="dbControlCobranzasModelStoreContainer">
-    <EntitySet Name="personas" EntityType="dbControlCobranzasModel.Store.personas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="rolUsuarios" EntityType="dbControlCobranzasModel.Store.rolUsuarios" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="usuarios" EntityType="dbControlCobranzasModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Bancos" EntityType="dbControlCobranzasModel.Store.Bancos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Clientes" EntityType="dbControlCobranzasModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Contratos" EntityType="dbControlCobranzasModel.Store.Contratos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DetallesContratos" EntityType="dbControlCobranzasModel.Store.DetallesContratos" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_usuarios_personas" Association="dbControlCobranzasModel.Store.FK_usuarios_personas">
-      <End Role="personas" EntitySet="personas" />
-      <End Role="usuarios" EntitySet="usuarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_usuarios_rolUsuario" Association="dbControlCobranzasModel.Store.FK_usuarios_rolUsuario">
-      <End Role="rolUsuario" EntitySet="rolUsuarios" />
-      <End Role="usuarios" EntitySet="usuarios" />
-    </AssociationSet>
-    <AssociationSet Name="ContratosClientes" Association="dbControlCobranzasModel.Store.ContratosClientes">
-      <End Role="Contratos" EntitySet="Contratos" />
-      <End Role="Clientes" EntitySet="Clientes" />
-    </AssociationSet>
-    <AssociationSet Name="BancosClientes" Association="dbControlCobranzasModel.Store.BancosClientes">
-      <End Role="Bancos" EntitySet="Bancos" />
-      <End Role="Clientes" EntitySet="Clientes" />
-    </AssociationSet>
-    <AssociationSet Name="usuarioClientes" Association="dbControlCobranzasModel.Store.usuarioClientes">
-      <End Role="usuario" EntitySet="usuarios" />
-      <End Role="Clientes" EntitySet="Clientes" />
-    </AssociationSet>
-    <AssociationSet Name="DetallesContratosContratos" Association="dbControlCobranzasModel.Store.DetallesContratosContratos">
-      <End Role="DetallesContratos" EntitySet="DetallesContratos" />
-      <End Role="Contratos" EntitySet="Contratos" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="personas">
-    <Key>
-      <PropertyRef Name="pkPersonaID" />
-    </Key>
-    <Property Name="pkPersonaID" Type="int" Nullable="false" />
-    <Property Name="asNombre" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="asApellido" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="rolUsuarios">
-    <Key>
-      <PropertyRef Name="pkRolUsuarioID" />
-    </Key>
-    <Property Name="pkRolUsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="asDescripcion" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="usuarios">
-    <Key>
-      <PropertyRef Name="pkUsuariosID" />
-    </Key>
-    <Property Name="pkUsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="asUsername" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="asPassword" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="fkPersonaID" Type="int" Nullable="true" />
-    <Property Name="fkRolUsuarioID" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Bancos">
-    <Key>
-      <PropertyRef Name="pkBancosID" />
-    </Key>
-    <Property Name="pkBancosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Clientes">
-    <Key>
-      <PropertyRef Name="pkClientesID" />
-    </Key>
-    <Property Name="pkClientesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Contrato_pkContratosID" Type="int" Nullable="false" />
-    <Property Name="Banco_pkBancosID" Type="int" Nullable="false" />
-    <Property Name="usuario_pkUsuariosID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Contratos">
-    <Key>
-      <PropertyRef Name="pkContratosID" />
-    </Key>
-    <Property Name="pkContratosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DetallesContrato_pkDetallesContratosID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DetallesContratos">
-    <Key>
-      <PropertyRef Name="pkDetallesContratosID" />
-    </Key>
-    <Property Name="pkDetallesContratosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_usuarios_personas">
-    <End Role="personas" Type="dbControlCobranzasModel.Store.personas" Multiplicity="0..1" />
-    <End Role="usuarios" Type="dbControlCobranzasModel.Store.usuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="personas">
-        <PropertyRef Name="pkPersonaID" />
-      </Principal>
-      <Dependent Role="usuarios">
-        <PropertyRef Name="fkPersonaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_usuarios_rolUsuario">
-    <End Role="rolUsuario" Type="dbControlCobranzasModel.Store.rolUsuarios" Multiplicity="0..1" />
-    <End Role="usuarios" Type="dbControlCobranzasModel.Store.usuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="rolUsuario">
-        <PropertyRef Name="pkRolUsuarioID" />
-      </Principal>
-      <Dependent Role="usuarios">
-        <PropertyRef Name="fkRolUsuarioID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ContratosClientes">
-    <End Role="Contratos" Type="dbControlCobranzasModel.Store.Contratos" Multiplicity="1" />
-    <End Role="Clientes" Type="dbControlCobranzasModel.Store.Clientes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Contratos">
-        <PropertyRef Name="pkContratosID" />
-      </Principal>
-      <Dependent Role="Clientes">
-        <PropertyRef Name="Contrato_pkContratosID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="BancosClientes">
-    <End Role="Bancos" Type="dbControlCobranzasModel.Store.Bancos" Multiplicity="1" />
-    <End Role="Clientes" Type="dbControlCobranzasModel.Store.Clientes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bancos">
-        <PropertyRef Name="pkBancosID" />
-      </Principal>
-      <Dependent Role="Clientes">
-        <PropertyRef Name="Banco_pkBancosID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuarioClientes">
-    <End Role="usuario" Type="dbControlCobranzasModel.Store.usuarios" Multiplicity="1" />
-    <End Role="Clientes" Type="dbControlCobranzasModel.Store.Clientes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuario">
-        <PropertyRef Name="pkUsuariosID" />
-      </Principal>
-      <Dependent Role="Clientes">
-        <PropertyRef Name="usuario_pkUsuariosID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="DetallesContratosContratos">
-    <End Role="DetallesContratos" Type="dbControlCobranzasModel.Store.DetallesContratos" Multiplicity="1" />
-    <End Role="Contratos" Type="dbControlCobranzasModel.Store.Contratos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DetallesContratos">
-        <PropertyRef Name="pkDetallesContratosID" />
-      </Principal>
-      <Dependent Role="Contratos">
-        <PropertyRef Name="DetallesContrato_pkDetallesContratosID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+      <Schema Namespace="dbControlCobranzasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="pkPersonaID" />
+          </Key>
+          <Property Name="pkPersonaID" Type="int" Nullable="false" />
+          <Property Name="asNombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="asApellido" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rolUsuario">
+          <Key>
+            <PropertyRef Name="pkRolUsuarioID" />
+          </Key>
+          <Property Name="pkRolUsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asDescripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="pkUsuariosID" />
+          </Key>
+          <Property Name="pkUsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="asPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fkPersonaID" Type="int" />
+          <Property Name="fkRolUsuarioID" Type="int" />
+        </EntityType>
+        <Association Name="FK_usuarios_personas">
+          <End Role="personas" Type="Self.personas" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="pkPersonaID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkPersonaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_rolUsuario">
+          <End Role="rolUsuario" Type="Self.rolUsuario" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolUsuario">
+              <PropertyRef Name="pkRolUsuarioID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkRolUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbControlCobranzasModelStoreContainer">
+          <EntitySet Name="personas" EntityType="Self.personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rolUsuario" EntityType="Self.rolUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_usuarios_personas" Association="Self.FK_usuarios_personas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_rolUsuario" Association="Self.FK_usuarios_rolUsuario">
+            <End Role="rolUsuario" EntitySet="rolUsuario" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbControlCobranzasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -184,6 +100,16 @@
           <Property Name="asDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_rolUsuario" FromRole="rolUsuario" ToRole="usuarios" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="pkUsuariosID" />
@@ -195,7 +121,6 @@
           <Property Name="fkRolUsuarioID" Type="Int32" />
           <NavigationProperty Name="persona" Relationship="Self.FK_usuarios_personas" FromRole="usuarios" ToRole="personas" />
           <NavigationProperty Name="rolUsuario" Relationship="Self.FK_usuarios_rolUsuario" FromRole="usuarios" ToRole="rolUsuario" />
-          <NavigationProperty Name="Clientes" Relationship="dbControlCobranzasModel.usuarioClientes" FromRole="usuario" ToRole="Clientes" />
         </EntityType>
         <Association Name="FK_usuarios_personas">
           <End Role="personas" Type="Self.persona" Multiplicity="0..1" />
@@ -224,6 +149,7 @@
         <EntityContainer Name="dbControlCobranzasEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="personas" EntityType="Self.persona" />
           <EntitySet Name="rolUsuarios" EntityType="Self.rolUsuario" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="usuarios" EntityType="Self.usuario" />
           <AssociationSet Name="FK_usuarios_personas" Association="Self.FK_usuarios_personas">
             <End Role="personas" EntitySet="personas" />
@@ -233,170 +159,55 @@
             <End Role="rolUsuario" EntitySet="rolUsuarios" />
             <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
-          <EntitySet Name="Bancos" EntityType="dbControlCobranzasModel.Bancos" />
-          <EntitySet Name="Clientes" EntityType="dbControlCobranzasModel.Clientes" />
-          <EntitySet Name="Contratos" EntityType="dbControlCobranzasModel.Contratos" />
-          <AssociationSet Name="ContratosClientes" Association="dbControlCobranzasModel.ContratosClientes">
-            <End Role="Contratos" EntitySet="Contratos" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="BancosClientes" Association="dbControlCobranzasModel.BancosClientes">
-            <End Role="Bancos" EntitySet="Bancos" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="usuarioClientes" Association="dbControlCobranzasModel.usuarioClientes">
-            <End Role="usuario" EntitySet="usuarios" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <EntitySet Name="DetallesContratos" EntityType="dbControlCobranzasModel.DetallesContratos" />
-          <AssociationSet Name="DetallesContratosContratos" Association="dbControlCobranzasModel.DetallesContratosContratos">
-            <End Role="DetallesContratos" EntitySet="DetallesContratos" />
-            <End Role="Contratos" EntitySet="Contratos" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Bancos">
-          <Key>
-            <PropertyRef Name="pkBancosID" />
-          </Key>
-          <Property Name="pkBancosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Clientes" Relationship="dbControlCobranzasModel.BancosClientes" FromRole="Bancos" ToRole="Clientes" />
-        </EntityType>
-        <EntityType Name="Clientes">
-          <Key>
-            <PropertyRef Name="pkClientesID" />
-          </Key>
-          <Property Name="pkClientesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Contrato" Relationship="dbControlCobranzasModel.ContratosClientes" FromRole="Clientes" ToRole="Contratos" />
-          <NavigationProperty Name="Banco" Relationship="dbControlCobranzasModel.BancosClientes" FromRole="Clientes" ToRole="Bancos" />
-          <NavigationProperty Name="usuario" Relationship="dbControlCobranzasModel.usuarioClientes" FromRole="Clientes" ToRole="usuario" />
-        </EntityType>
-        <EntityType Name="Contratos">
-          <Key>
-            <PropertyRef Name="pkContratosID" />
-          </Key>
-          <Property Name="pkContratosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Clientes" Relationship="dbControlCobranzasModel.ContratosClientes" FromRole="Contratos" ToRole="Clientes" />
-          <NavigationProperty Name="DetallesContrato" Relationship="dbControlCobranzasModel.DetallesContratosContratos" FromRole="Contratos" ToRole="DetallesContratos" />
-        </EntityType>
-        <Association Name="ContratosClientes">
-          <End Type="dbControlCobranzasModel.Contratos" Role="Contratos" Multiplicity="1" />
-          <End Type="dbControlCobranzasModel.Clientes" Role="Clientes" Multiplicity="*" />
-        </Association>
-        <Association Name="BancosClientes">
-          <End Type="dbControlCobranzasModel.Bancos" Role="Bancos" Multiplicity="1" />
-          <End Type="dbControlCobranzasModel.Clientes" Role="Clientes" Multiplicity="*" />
-        </Association>
-        <Association Name="usuarioClientes">
-          <End Type="dbControlCobranzasModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="dbControlCobranzasModel.Clientes" Role="Clientes" Multiplicity="*" />
-        </Association>
-        <EntityType Name="DetallesContratos">
-          <Key>
-            <PropertyRef Name="pkDetallesContratosID" />
-          </Key>
-          <Property Name="pkDetallesContratosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Contratos" Relationship="dbControlCobranzasModel.DetallesContratosContratos" FromRole="DetallesContratos" ToRole="Contratos" />
-        </EntityType>
-        <Association Name="DetallesContratosContratos">
-          <End Type="dbControlCobranzasModel.DetallesContratos" Role="DetallesContratos" Multiplicity="1" />
-          <End Type="dbControlCobranzasModel.Contratos" Role="Contratos" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="dbControlCobranzasModelStoreContainer" CdmEntityContainer="dbControlCobranzasEntities">
-    <EntitySetMapping Name="personas">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.persona)">
-        <MappingFragment StoreEntitySet="personas">
-          <ScalarProperty Name="pkPersonaID" ColumnName="pkPersonaID" />
-          <ScalarProperty Name="asNombre" ColumnName="asNombre" />
-          <ScalarProperty Name="asApellido" ColumnName="asApellido" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="rolUsuarios">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.rolUsuario)">
-        <MappingFragment StoreEntitySet="rolUsuarios">
-          <ScalarProperty Name="pkRolUsuarioID" ColumnName="pkRolUsuarioID" />
-          <ScalarProperty Name="asDescripcion" ColumnName="asDescripcion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="usuarios">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.usuario)">
-        <MappingFragment StoreEntitySet="usuarios">
-          <ScalarProperty Name="pkUsuariosID" ColumnName="pkUsuariosID" />
-          <ScalarProperty Name="asUsername" ColumnName="asUsername" />
-          <ScalarProperty Name="asPassword" ColumnName="asPassword" />
-          <ScalarProperty Name="fkPersonaID" ColumnName="fkPersonaID" />
-          <ScalarProperty Name="fkRolUsuarioID" ColumnName="fkRolUsuarioID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Bancos">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.Bancos)">
-        <MappingFragment StoreEntitySet="Bancos">
-          <ScalarProperty Name="pkBancosID" ColumnName="pkBancosID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Clientes">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.Clientes)">
-        <MappingFragment StoreEntitySet="Clientes">
-          <ScalarProperty Name="pkClientesID" ColumnName="pkClientesID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Contratos">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.Contratos)">
-        <MappingFragment StoreEntitySet="Contratos">
-          <ScalarProperty Name="pkContratosID" ColumnName="pkContratosID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DetallesContratos">
-      <EntityTypeMapping TypeName="IsTypeOf(dbControlCobranzasModel.DetallesContratos)">
-        <MappingFragment StoreEntitySet="DetallesContratos">
-          <ScalarProperty Name="pkDetallesContratosID" ColumnName="pkDetallesContratosID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="ContratosClientes" TypeName="dbControlCobranzasModel.ContratosClientes" StoreEntitySet="Clientes">
-      <EndProperty Name="Contratos">
-        <ScalarProperty Name="pkContratosID" ColumnName="Contrato_pkContratosID" />
-      </EndProperty>
-      <EndProperty Name="Clientes">
-        <ScalarProperty Name="pkClientesID" ColumnName="pkClientesID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="BancosClientes" TypeName="dbControlCobranzasModel.BancosClientes" StoreEntitySet="Clientes">
-      <EndProperty Name="Bancos">
-        <ScalarProperty Name="pkBancosID" ColumnName="Banco_pkBancosID" />
-      </EndProperty>
-      <EndProperty Name="Clientes">
-        <ScalarProperty Name="pkClientesID" ColumnName="pkClientesID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="usuarioClientes" TypeName="dbControlCobranzasModel.usuarioClientes" StoreEntitySet="Clientes">
-      <EndProperty Name="usuario">
-        <ScalarProperty Name="pkUsuariosID" ColumnName="usuario_pkUsuariosID" />
-      </EndProperty>
-      <EndProperty Name="Clientes">
-        <ScalarProperty Name="pkClientesID" ColumnName="pkClientesID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="DetallesContratosContratos" TypeName="dbControlCobranzasModel.DetallesContratosContratos" StoreEntitySet="Contratos">
-      <EndProperty Name="DetallesContratos">
-        <ScalarProperty Name="pkDetallesContratosID" ColumnName="DetallesContrato_pkDetallesContratosID" />
-      </EndProperty>
-      <EndProperty Name="Contratos">
-        <ScalarProperty Name="pkContratosID" ColumnName="pkContratosID" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbControlCobranzasModelStoreContainer" CdmEntityContainer="dbControlCobranzasEntities">
+          <EntitySetMapping Name="personas">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.persona">
+              <MappingFragment StoreEntitySet="personas">
+                <ScalarProperty Name="pkPersonaID" ColumnName="pkPersonaID" />
+                <ScalarProperty Name="asNombre" ColumnName="asNombre" />
+                <ScalarProperty Name="asApellido" ColumnName="asApellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolUsuarios">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.rolUsuario">
+              <MappingFragment StoreEntitySet="rolUsuario">
+                <ScalarProperty Name="pkRolUsuarioID" ColumnName="pkRolUsuarioID" />
+                <ScalarProperty Name="asDescripcion" ColumnName="asDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.usuario">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="pkUsuariosID" ColumnName="pkUsuariosID" />
+                <ScalarProperty Name="asUsername" ColumnName="asUsername" />
+                <ScalarProperty Name="asPassword" ColumnName="asPassword" />
+                <ScalarProperty Name="fkPersonaID" ColumnName="fkPersonaID" />
+                <ScalarProperty Name="fkRolUsuarioID" ColumnName="fkRolUsuarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -410,7 +221,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
       </DesignerInfoPropertySet>
     </Options>

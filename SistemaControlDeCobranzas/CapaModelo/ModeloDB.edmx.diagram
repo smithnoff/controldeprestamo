@@ -4,24 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ad31a40edce94f5d9af964696fcabd64" Name="Diagram1" ZoomLevel="66">
-        <EntityTypeShape EntityType="dbControlCobranzasModel.persona" Width="1.5" PointX="2" PointY="1.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.rolUsuario" Width="1.5" PointX="2.625" PointY="2.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.usuario" Width="1.5" PointX="4.25" PointY="1" IsExpanded="false" />
+      <Diagram DiagramId="ad31a40edce94f5d9af964696fcabd64" Name="Diagram1">
+        <EntityTypeShape EntityType="dbControlCobranzasModel.persona" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.rolUsuario" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.usuario" Width="1.5" PointX="4.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="dbControlCobranzasModel.FK_usuarios_personas" ManuallyRouted="false" />
         <AssociationConnector Association="dbControlCobranzasModel.FK_usuarios_rolUsuario" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.Bancos" Width="1.5" PointX="6.625" PointY="1.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.Clientes" Width="1.5" PointX="5" PointY="3.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.Contratos" Width="1.5" PointX="7.625" PointY="3.375" IsExpanded="false" />
-        <AssociationConnector Association="dbControlCobranzasModel.ContratosClientes" />
-        <AssociationConnector Association="dbControlCobranzasModel.BancosClientes" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.625" PointY="1.325" />
-          <ConnectorPoint PointX="6.1389145276130828" PointY="1.325" />
-          <ConnectorPoint PointX="6.1389145276130828" PointY="3.875" />
-        </AssociationConnector>
-        <AssociationConnector Association="dbControlCobranzasModel.usuarioClientes" />
-        <EntityTypeShape EntityType="dbControlCobranzasModel.DetallesContratos" Width="1.625" PointX="7.5" PointY="2.25" IsExpanded="false" />
-        <AssociationConnector Association="dbControlCobranzasModel.DetallesContratosContratos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

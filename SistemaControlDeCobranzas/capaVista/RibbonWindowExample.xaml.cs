@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using Microsoft.Windows.Controls.Ribbon;
 
-using CapaModelo;
-
-
 namespace capaVista
 {
     /// <summary>
@@ -24,9 +21,7 @@ namespace capaVista
     /// </summary>
     public partial class RibbonWindowExample : RibbonWindow
     {
-
-        PruebaQuery pruebaq = new PruebaQuery();
-
+        
         public RibbonWindowExample()
         {
             InitializeComponent();
@@ -40,23 +35,11 @@ namespace capaVista
         private void btImprimir_Click(object sender, RoutedEventArgs e)
         {
             GridImprimir.Visibility = Visibility.Visible;
-
-
-            dgprueba.ItemsSource = pruebaq.llenargrid();
-            
         }
 
         private void closeImprimir_Click(object sender, RoutedEventArgs e)
         {
-
-
             GridImprimir.Visibility = Visibility.Collapsed;
-        }
-
-        private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-
-           
         }
 
        
