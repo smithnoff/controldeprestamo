@@ -25,7 +25,5 @@ namespace capaVista
         {
             InitializeComponent();
         }
-
-       
     }
 }

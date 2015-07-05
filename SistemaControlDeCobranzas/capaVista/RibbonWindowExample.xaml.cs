@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 using Microsoft.Windows.Controls.Ribbon;
 
 namespace capaVista
@@ -41,7 +40,5 @@ namespace capaVista
         {
             GridImprimir.Visibility = Visibility.Collapsed;
         }
-
-       
     }
 }

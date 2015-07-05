@@ -21,7 +21,7 @@
                 <ribbon:RibbonTab Header="Inicio">
                     <ribbon:RibbonGroup Header="Group1" QuickAccessToolBarId="{Binding Label}">
                         <ribbon:RibbonButton LargeImageSource="Images\Actions-document-save-icon.png" Label="Guardar" />
-                        <ribbon:RibbonButton x:Name="btImprimir" SmallImageSource="Images\Device-Printer-icon.png" Label="Imprimir" Click="btImprimir_Click"   />
+                        <ribbon:RibbonButton x:Name="btImprimir" SmallImageSource="Images\Device-Printer-icon.png" Label="Imprimir" Click="btImprimir_Click"  />
                         <ribbon:RibbonSplitButton  SmallImageSource="Images\Actions-document-save-icon.png" Label="Boton1" >
                             <ribbon:RibbonMenuItem Header="Boton2" ImageSource="{x:Null}" QuickAccessToolBarImageSource="Images\Actions-document-save-icon.png"/>
                             <ribbon:RibbonMenuItem Header="Boton2" ImageSource="Images\Actions-document-save-icon.png" QuickAccessToolBarImageSource="Images\Actions-document-save-icon.png" />
