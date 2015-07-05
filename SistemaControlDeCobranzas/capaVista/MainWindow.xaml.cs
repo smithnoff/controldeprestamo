@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.Data.SqlClient;
 
 namespace capaVista
 {
@@ -20,10 +21,16 @@ namespace capaVista
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : MetroWindow
-    {
+    {   
         public MainWindow()
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
+=======
+        
+       
+       
+>>>>>>> 8c6113441b5970e90b96e64a00944b4b5242f7ef
     }
 }
