@@ -28,7 +28,11 @@
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="180,72,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="180,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" BorderThickness="1" CaretBrush="#FF086F9E" CharacterCasing="Upper" Foreground="#FF8B8B8B"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="180,140,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
+<<<<<<< HEAD
         <PasswordBox HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
+=======
+       <PasswordBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña"  HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
+>>>>>>> e030f8bad1001e57f582cffab65b78a4d6dd91c8
         <Button Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" Background="#FF0083B9" Foreground="#FFFFF9F9" FontSize="18" BorderBrush="#FF086F9E"/>
        
     </Grid>
