@@ -14,23 +14,36 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Data.SqlClient;
-
+using CapaModelo;
 namespace capaVista
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : MetroWindow
-    {   
+    {
+        dbControlCobranzasEntities context = new dbControlCobranzasEntities();
+       
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+            var query = context.personas.Where(p => p.pkPersonaID == 23589144).FirstOrDefault();
+
+            txtbu.Text = query.asNombre.ToString();
+         
+
         }
-<<<<<<< HEAD
-=======
-        
+
        
-       
->>>>>>> 8c6113441b5970e90b96e64a00944b4b5242f7ef
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+           
+        }
+
     }
 }
