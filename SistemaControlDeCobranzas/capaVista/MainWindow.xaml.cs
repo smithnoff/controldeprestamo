@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Data.SqlClient;
 using CapaModelo;
+using CapaNegocio;
 namespace capaVista
 {
     /// <summary>
@@ -22,17 +23,22 @@ namespace capaVista
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        dbControlCobranzasEntities context = new dbControlCobranzasEntities();
+        sesion w = new sesion();
        
         public MainWindow()
         {
             InitializeComponent();
 
+            foreach (persona u in w.user())
+            {
+                if (u.pkPersonaID == 23589144)
+                {
+                    tbUsername.Text = u.asNombre + " " + u.asApellido;
+                    tbPassword.Password = u.pkPersonaID.ToString();
+                }
+            }
 
-
-            var query = context.personas.Where(p => p.pkPersonaID == 23589144).FirstOrDefault();
-
-            txtbu.Text = query.asNombre.ToString();
+            
          
 
         }

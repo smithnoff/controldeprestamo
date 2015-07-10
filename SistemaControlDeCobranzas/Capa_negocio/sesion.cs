@@ -11,13 +11,13 @@ namespace CapaNegocio
         public persona query1;
         
 
-        public void user(){
+        public IQueryable<persona> user(){
             CapaModelo.dbControlCobranzasEntities ob = new dbControlCobranzasEntities();
 
-             var query = ob.personas.Where(p => p.pkPersonaID == 23589144).FirstOrDefault();
+             var query = ob.personas;
 
 
-             query1 = query;
+             return query;
          
            
             
