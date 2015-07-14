@@ -11,10 +11,10 @@ namespace CapaNegocio
         public persona query1;
         
 
-        public IQueryable<persona> user(){
+        public IQueryable<usuario> user(){
             CapaModelo.dbControlCobranzasEntities ob = new dbControlCobranzasEntities();
 
-             var query = ob.personas;
+             var query = ob.usuarios;
 
 
              return query;

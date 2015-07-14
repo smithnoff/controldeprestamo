@@ -29,14 +29,14 @@
             </Polygon>
             <Label Content="Credenciales, por favor" HorizontalAlignment="Left" Margin="180,19,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="18" FontFamily="Arial Narrow"/>
             <Label Content="Usuario" HorizontalAlignment="Left" Margin="180,72,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
-            <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Usuario" x:Name="tbUsername" HorizontalAlignment="Left" Height="23" Margin="180,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" BorderThickness="1" CaretBrush="#FF086F9E" CharacterCasing="Upper" Foreground="#FF8B8B8B"/>
+            <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Usuario" x:Name="tbUsername" HorizontalAlignment="Left" Height="23" Margin="180,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" BorderThickness="1" CaretBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
             <Label Content="Contraseña" HorizontalAlignment="Left" Margin="180,140,0,0" VerticalAlignment="Top" Foreground="#CC212C3D" FontSize="16" FontFamily="Arial Narrow"/>
 
             <PasswordBox HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
 
             <PasswordBox x:Name="tbPassword" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña"  HorizontalAlignment="Left" Margin="180,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.5,1.731" Width="305" Background="#FFE9EAEC" BorderBrush="#FF086F9E" Foreground="#FF8B8B8B"/>
 
-            <Button x:Name="button" Style="{StaticResource AccentedSquareButtonStyle}" Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" FontSize="18" Click="Button_Click"/>
+            <Button x:Name="button" Style="{StaticResource AccentedSquareButtonStyle}" IsDefault="True" Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" FontSize="18" Click="Button_Click"/>
 
         </Grid>
     </Grid>

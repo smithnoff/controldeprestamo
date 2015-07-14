@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System.Data.SqlClient;
 using CapaModelo;
 using CapaNegocio;
@@ -23,31 +24,32 @@ namespace capaVista
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        sesion w = new sesion();
+        sesion s = new sesion();
+        MenuPrincipal m = new MenuPrincipal();
        
         public MainWindow()
         {
             InitializeComponent();
-
-            foreach (persona u in w.user())
-            {
-                if (u.pkPersonaID == 23589144)
-                {
-                    tbUsername.Text = u.asNombre + " " + u.asApellido;
-                    tbPassword.Password = u.pkPersonaID.ToString();
-                }
-            }
-
-            
-         
-
         }
 
        
-        private void Button_Click(object sender, RoutedEventArgs e)
+      async private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            int flag = 0;
+            foreach (usuario u in s.user())
+            {
+                if (u.asUsername == tbUsername.Text && u.asPassword == tbPassword.Password)
+                {
+                    m.Show();
+                    this.Close();
+                    flag++;
+                }                
+            }
+
+            if (flag == 0)
+            {
+                await this.ShowMessageAsync("Error!", "Usuario o Contraseña Invalida..");                  
+            }
            
         }
 
