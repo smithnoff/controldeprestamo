@@ -2,7 +2,7 @@
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <!-- Diagram contenthjkh (shape and connector positions) -->
+    <!-- Diagram contenthjkh (shape and connectorasdasd positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ad31a40edce94f5d9af964696fcabd64" Name="Diagram1">
         <EntityTypeShape EntityType="dbControlCobranzasModel.persona" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
