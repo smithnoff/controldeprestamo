@@ -3,7 +3,7 @@
 //    This code was generated from a template.
 //
 //    Manual changes to this file may cause unexpected behavior in your application.
-//    Manual changes to this file will be overwritten if the code is regenerated.jhfjkfkjfjkfjkfjk
+//    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -20,7 +20,11 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_usuarios_personas", "personas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CapaModelo.persona), "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.usuario), true)]
-[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario", "rolUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CapaModelo.rolUsuario), "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.usuario), true)]
+[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_BancosClientes", "Banco", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CapaModelo.Banco), "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.Cliente), true)]
+[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_ContratosClientes", "Contrato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CapaModelo.Contrato), "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.Cliente), true)]
+[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_usuarioClientes", "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CapaModelo.usuario), "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.Cliente), true)]
+[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_DetallesContratosContratos", "DetallesContrato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CapaModelo.DetallesContrato), "Contrato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.Contrato), true)]
+[assembly: EdmRelationshipAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario1", "rolUsuario1", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CapaModelo.rolUsuario1), "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CapaModelo.usuario), true)]
 
 #endregion
 
@@ -91,22 +95,6 @@ namespace CapaModelo
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<rolUsuario> rolUsuarios
-        {
-            get
-            {
-                if ((_rolUsuarios == null))
-                {
-                    _rolUsuarios = base.CreateObjectSet<rolUsuario>("rolUsuarios");
-                }
-                return _rolUsuarios;
-            }
-        }
-        private ObjectSet<rolUsuario> _rolUsuarios;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<sysdiagram> sysdiagrams
         {
             get
@@ -135,6 +123,86 @@ namespace CapaModelo
             }
         }
         private ObjectSet<usuario> _usuarios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Banco> Bancos
+        {
+            get
+            {
+                if ((_Bancos == null))
+                {
+                    _Bancos = base.CreateObjectSet<Banco>("Bancos");
+                }
+                return _Bancos;
+            }
+        }
+        private ObjectSet<Banco> _Bancos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Cliente> Clientes
+        {
+            get
+            {
+                if ((_Clientes == null))
+                {
+                    _Clientes = base.CreateObjectSet<Cliente>("Clientes");
+                }
+                return _Clientes;
+            }
+        }
+        private ObjectSet<Cliente> _Clientes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Contrato> Contratos
+        {
+            get
+            {
+                if ((_Contratos == null))
+                {
+                    _Contratos = base.CreateObjectSet<Contrato>("Contratos");
+                }
+                return _Contratos;
+            }
+        }
+        private ObjectSet<Contrato> _Contratos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<DetallesContrato> DetallesContratos
+        {
+            get
+            {
+                if ((_DetallesContratos == null))
+                {
+                    _DetallesContratos = base.CreateObjectSet<DetallesContrato>("DetallesContratos");
+                }
+                return _DetallesContratos;
+            }
+        }
+        private ObjectSet<DetallesContrato> _DetallesContratos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<rolUsuario1> rolUsuario1
+        {
+            get
+            {
+                if ((_rolUsuario1 == null))
+                {
+                    _rolUsuario1 = base.CreateObjectSet<rolUsuario1>("rolUsuario1");
+                }
+                return _rolUsuario1;
+            }
+        }
+        private ObjectSet<rolUsuario1> _rolUsuario1;
 
         #endregion
 
@@ -146,14 +214,6 @@ namespace CapaModelo
         public void AddTopersonas(persona persona)
         {
             base.AddObject("personas", persona);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the rolUsuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTorolUsuarios(rolUsuario rolUsuario)
-        {
-            base.AddObject("rolUsuarios", rolUsuario);
         }
     
         /// <summary>
@@ -171,6 +231,46 @@ namespace CapaModelo
         {
             base.AddObject("usuarios", usuario);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Bancos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBancos(Banco banco)
+        {
+            base.AddObject("Bancos", banco);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Clientes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToClientes(Cliente cliente)
+        {
+            base.AddObject("Clientes", cliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Contratos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContratos(Contrato contrato)
+        {
+            base.AddObject("Contratos", contrato);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the DetallesContratos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDetallesContratos(DetallesContrato detallesContrato)
+        {
+            base.AddObject("DetallesContratos", detallesContrato);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the rolUsuario1 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTorolUsuario1(rolUsuario1 rolUsuario1)
+        {
+            base.AddObject("rolUsuario1", rolUsuario1);
+        }
 
         #endregion
 
@@ -179,6 +279,568 @@ namespace CapaModelo
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="Banco")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Banco : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Banco object.
+        /// </summary>
+        /// <param name="pkBancosID">Initial value of the pkBancosID property.</param>
+        public static Banco CreateBanco(global::System.Int32 pkBancosID)
+        {
+            Banco banco = new Banco();
+            banco.pkBancosID = pkBancosID;
+            return banco;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 pkBancosID
+        {
+            get
+            {
+                return _pkBancosID;
+            }
+            set
+            {
+                if (_pkBancosID != value)
+                {
+                    OnpkBancosIDChanging(value);
+                    ReportPropertyChanging("pkBancosID");
+                    _pkBancosID = StructuralObject.SetValidValue(value, "pkBancosID");
+                    ReportPropertyChanged("pkBancosID");
+                    OnpkBancosIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _pkBancosID;
+        partial void OnpkBancosIDChanging(global::System.Int32 value);
+        partial void OnpkBancosIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_BancosClientes", "Cliente")]
+        public EntityCollection<Cliente> Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cliente>("dbControlCobranzasModel.FK_BancosClientes", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cliente>("dbControlCobranzasModel.FK_BancosClientes", "Cliente", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="Cliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Cliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Cliente object.
+        /// </summary>
+        /// <param name="pkClientesID">Initial value of the pkClientesID property.</param>
+        /// <param name="contrato_pkContratosID">Initial value of the Contrato_pkContratosID property.</param>
+        /// <param name="banco_pkBancosID">Initial value of the Banco_pkBancosID property.</param>
+        /// <param name="usuario_pkUsuariosID">Initial value of the usuario_pkUsuariosID property.</param>
+        public static Cliente CreateCliente(global::System.Int32 pkClientesID, global::System.Int32 contrato_pkContratosID, global::System.Int32 banco_pkBancosID, global::System.Int32 usuario_pkUsuariosID)
+        {
+            Cliente cliente = new Cliente();
+            cliente.pkClientesID = pkClientesID;
+            cliente.Contrato_pkContratosID = contrato_pkContratosID;
+            cliente.Banco_pkBancosID = banco_pkBancosID;
+            cliente.usuario_pkUsuariosID = usuario_pkUsuariosID;
+            return cliente;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 pkClientesID
+        {
+            get
+            {
+                return _pkClientesID;
+            }
+            set
+            {
+                if (_pkClientesID != value)
+                {
+                    OnpkClientesIDChanging(value);
+                    ReportPropertyChanging("pkClientesID");
+                    _pkClientesID = StructuralObject.SetValidValue(value, "pkClientesID");
+                    ReportPropertyChanged("pkClientesID");
+                    OnpkClientesIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _pkClientesID;
+        partial void OnpkClientesIDChanging(global::System.Int32 value);
+        partial void OnpkClientesIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Contrato_pkContratosID
+        {
+            get
+            {
+                return _Contrato_pkContratosID;
+            }
+            set
+            {
+                OnContrato_pkContratosIDChanging(value);
+                ReportPropertyChanging("Contrato_pkContratosID");
+                _Contrato_pkContratosID = StructuralObject.SetValidValue(value, "Contrato_pkContratosID");
+                ReportPropertyChanged("Contrato_pkContratosID");
+                OnContrato_pkContratosIDChanged();
+            }
+        }
+        private global::System.Int32 _Contrato_pkContratosID;
+        partial void OnContrato_pkContratosIDChanging(global::System.Int32 value);
+        partial void OnContrato_pkContratosIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Banco_pkBancosID
+        {
+            get
+            {
+                return _Banco_pkBancosID;
+            }
+            set
+            {
+                OnBanco_pkBancosIDChanging(value);
+                ReportPropertyChanging("Banco_pkBancosID");
+                _Banco_pkBancosID = StructuralObject.SetValidValue(value, "Banco_pkBancosID");
+                ReportPropertyChanged("Banco_pkBancosID");
+                OnBanco_pkBancosIDChanged();
+            }
+        }
+        private global::System.Int32 _Banco_pkBancosID;
+        partial void OnBanco_pkBancosIDChanging(global::System.Int32 value);
+        partial void OnBanco_pkBancosIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 usuario_pkUsuariosID
+        {
+            get
+            {
+                return _usuario_pkUsuariosID;
+            }
+            set
+            {
+                Onusuario_pkUsuariosIDChanging(value);
+                ReportPropertyChanging("usuario_pkUsuariosID");
+                _usuario_pkUsuariosID = StructuralObject.SetValidValue(value, "usuario_pkUsuariosID");
+                ReportPropertyChanged("usuario_pkUsuariosID");
+                Onusuario_pkUsuariosIDChanged();
+            }
+        }
+        private global::System.Int32 _usuario_pkUsuariosID;
+        partial void Onusuario_pkUsuariosIDChanging(global::System.Int32 value);
+        partial void Onusuario_pkUsuariosIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_BancosClientes", "Banco")]
+        public Banco Banco
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Banco>("dbControlCobranzasModel.FK_BancosClientes", "Banco").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Banco>("dbControlCobranzasModel.FK_BancosClientes", "Banco").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Banco> BancoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Banco>("dbControlCobranzasModel.FK_BancosClientes", "Banco");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Banco>("dbControlCobranzasModel.FK_BancosClientes", "Banco", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_ContratosClientes", "Contrato")]
+        public Contrato Contrato
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contrato>("dbControlCobranzasModel.FK_ContratosClientes", "Contrato").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contrato>("dbControlCobranzasModel.FK_ContratosClientes", "Contrato").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contrato> ContratoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contrato>("dbControlCobranzasModel.FK_ContratosClientes", "Contrato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contrato>("dbControlCobranzasModel.FK_ContratosClientes", "Contrato", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarioClientes", "usuario")]
+        public usuario usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("dbControlCobranzasModel.FK_usuarioClientes", "usuario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("dbControlCobranzasModel.FK_usuarioClientes", "usuario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuario> usuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("dbControlCobranzasModel.FK_usuarioClientes", "usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("dbControlCobranzasModel.FK_usuarioClientes", "usuario", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="Contrato")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Contrato : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Contrato object.
+        /// </summary>
+        /// <param name="pkContratosID">Initial value of the pkContratosID property.</param>
+        /// <param name="detallesContrato_pkDetallesContratosID">Initial value of the DetallesContrato_pkDetallesContratosID property.</param>
+        public static Contrato CreateContrato(global::System.Int32 pkContratosID, global::System.Int32 detallesContrato_pkDetallesContratosID)
+        {
+            Contrato contrato = new Contrato();
+            contrato.pkContratosID = pkContratosID;
+            contrato.DetallesContrato_pkDetallesContratosID = detallesContrato_pkDetallesContratosID;
+            return contrato;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 pkContratosID
+        {
+            get
+            {
+                return _pkContratosID;
+            }
+            set
+            {
+                if (_pkContratosID != value)
+                {
+                    OnpkContratosIDChanging(value);
+                    ReportPropertyChanging("pkContratosID");
+                    _pkContratosID = StructuralObject.SetValidValue(value, "pkContratosID");
+                    ReportPropertyChanged("pkContratosID");
+                    OnpkContratosIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _pkContratosID;
+        partial void OnpkContratosIDChanging(global::System.Int32 value);
+        partial void OnpkContratosIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DetallesContrato_pkDetallesContratosID
+        {
+            get
+            {
+                return _DetallesContrato_pkDetallesContratosID;
+            }
+            set
+            {
+                OnDetallesContrato_pkDetallesContratosIDChanging(value);
+                ReportPropertyChanging("DetallesContrato_pkDetallesContratosID");
+                _DetallesContrato_pkDetallesContratosID = StructuralObject.SetValidValue(value, "DetallesContrato_pkDetallesContratosID");
+                ReportPropertyChanged("DetallesContrato_pkDetallesContratosID");
+                OnDetallesContrato_pkDetallesContratosIDChanged();
+            }
+        }
+        private global::System.Int32 _DetallesContrato_pkDetallesContratosID;
+        partial void OnDetallesContrato_pkDetallesContratosIDChanging(global::System.Int32 value);
+        partial void OnDetallesContrato_pkDetallesContratosIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_ContratosClientes", "Cliente")]
+        public EntityCollection<Cliente> Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cliente>("dbControlCobranzasModel.FK_ContratosClientes", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cliente>("dbControlCobranzasModel.FK_ContratosClientes", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_DetallesContratosContratos", "DetallesContrato")]
+        public DetallesContrato DetallesContrato
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DetallesContrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "DetallesContrato").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DetallesContrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "DetallesContrato").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<DetallesContrato> DetallesContratoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DetallesContrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "DetallesContrato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DetallesContrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "DetallesContrato", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="DetallesContrato")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class DetallesContrato : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new DetallesContrato object.
+        /// </summary>
+        /// <param name="pkDetallesContratosID">Initial value of the pkDetallesContratosID property.</param>
+        public static DetallesContrato CreateDetallesContrato(global::System.Int32 pkDetallesContratosID)
+        {
+            DetallesContrato detallesContrato = new DetallesContrato();
+            detallesContrato.pkDetallesContratosID = pkDetallesContratosID;
+            return detallesContrato;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 pkDetallesContratosID
+        {
+            get
+            {
+                return _pkDetallesContratosID;
+            }
+            set
+            {
+                if (_pkDetallesContratosID != value)
+                {
+                    OnpkDetallesContratosIDChanging(value);
+                    ReportPropertyChanging("pkDetallesContratosID");
+                    _pkDetallesContratosID = StructuralObject.SetValidValue(value, "pkDetallesContratosID");
+                    ReportPropertyChanged("pkDetallesContratosID");
+                    OnpkDetallesContratosIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _pkDetallesContratosID;
+        partial void OnpkDetallesContratosIDChanging(global::System.Int32 value);
+        partial void OnpkDetallesContratosIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_DetallesContratosContratos", "Contrato")]
+        public EntityCollection<Contrato> Contratos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Contrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "Contrato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Contrato>("dbControlCobranzasModel.FK_DetallesContratosContratos", "Contrato", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -313,22 +975,22 @@ namespace CapaModelo
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="rolUsuario")]
+    [EdmEntityTypeAttribute(NamespaceName="dbControlCobranzasModel", Name="rolUsuario1")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class rolUsuario : EntityObject
+    public partial class rolUsuario1 : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new rolUsuario object.
+        /// Create a new rolUsuario1 object.
         /// </summary>
         /// <param name="pkRolUsuarioID">Initial value of the pkRolUsuarioID property.</param>
-        public static rolUsuario CreaterolUsuario(global::System.Int32 pkRolUsuarioID)
+        public static rolUsuario1 CreaterolUsuario1(global::System.Int32 pkRolUsuarioID)
         {
-            rolUsuario rolUsuario = new rolUsuario();
-            rolUsuario.pkRolUsuarioID = pkRolUsuarioID;
-            return rolUsuario;
+            rolUsuario1 rolUsuario1 = new rolUsuario1();
+            rolUsuario1.pkRolUsuarioID = pkRolUsuarioID;
+            return rolUsuario1;
         }
 
         #endregion
@@ -396,18 +1058,18 @@ namespace CapaModelo
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario", "usuarios")]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario1", "usuario")]
         public EntityCollection<usuario> usuarios
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<usuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "usuarios");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<usuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<usuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "usuarios", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<usuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "usuario", value);
                 }
             }
         }
@@ -768,16 +1430,38 @@ namespace CapaModelo
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario", "rolUsuario")]
-        public rolUsuario rolUsuario
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarioClientes", "Cliente")]
+        public EntityCollection<Cliente> Clientes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "rolUsuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cliente>("dbControlCobranzasModel.FK_usuarioClientes", "Cliente");
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "rolUsuario").Value = value;
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cliente>("dbControlCobranzasModel.FK_usuarioClientes", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("dbControlCobranzasModel", "FK_usuarios_rolUsuario1", "rolUsuario1")]
+        public rolUsuario1 rolUsuario1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario1>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "rolUsuario1").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario1>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "rolUsuario1").Value = value;
             }
         }
         /// <summary>
@@ -785,17 +1469,17 @@ namespace CapaModelo
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<rolUsuario> rolUsuarioReference
+        public EntityReference<rolUsuario1> rolUsuario1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "rolUsuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<rolUsuario1>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "rolUsuario1");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<rolUsuario>("dbControlCobranzasModel.FK_usuarios_rolUsuario", "rolUsuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<rolUsuario1>("dbControlCobranzasModel.FK_usuarios_rolUsuario1", "rolUsuario1", value);
                 }
             }
         }
