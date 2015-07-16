@@ -154,3 +154,8 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+# ignorando cambios en el app.config
+
+SistemaControlDeCobranzas/CapaModelo/App.Config
+SistemaControlDeCobranzas/capaVista/App.config
