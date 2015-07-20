@@ -1,11 +1,42 @@
-﻿<Controls:MetroWindow x:Class="capaVista.MenuPrincipal"
+﻿<Controls:MetroWindow 
+                      x:Class="capaVista.MenuPrincipal"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"                                         
+                      xmlns:Behaviours="clr-namespace:Fluent.Metro.Behaviours"
                       Title="Sistema de Cobranza"
                       Height="350"
                       Width="525" WindowState="Maximized" WindowStartupLocation="CenterScreen" TitleCaps="False">
     <Grid>
 
+        <Fluent:Ribbon Height="189">
+            
+                <!--Backstage-->
+                <Fluent:Ribbon.Menu>
+                    <Fluent:Backstage>
+                    </Fluent:Backstage>
+                </Fluent:Ribbon.Menu>
+                <!--Tabs-->
+                <Fluent:RibbonTabItem Header="Tab">
+                    <Fluent:RibbonGroupBox Header="Group">
+                    <Fluent:Button Name="buttonGreen" Header="Boton1" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
+                    <Fluent:Button Name="buttonGray" Header="Boton2" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
+                    </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Group2">
+                    <Fluent:Button Name="buttonGreen1" Header="Boton1" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
+                    <Fluent:Button Name="buttonGray2" SizeDefinition="Middle, Small, Small" Header="Boton2" LargeIcon="Images/Actions-document-save-icon.png" />
+                    <Fluent:Button Name="buttonGray3" SizeDefinition="Middle, Small, Small" Header="Boton3" Icon="Images/Actions-document-save-icon.png" />
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="Tab2">
+                <Fluent:RibbonGroupBox Header="Group">
+                    <Fluent:Button Name="but" Header="Boton1" Icon="" LargeIcon="" />
+                    <Fluent:Button Name="but2" Header="Boton2" Icon="" LargeIcon="" />
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+
+        </Fluent:Ribbon>
     </Grid>
+    
 </Controls:MetroWindow>

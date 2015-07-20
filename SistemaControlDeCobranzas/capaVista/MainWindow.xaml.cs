@@ -35,13 +35,17 @@ namespace capaVista
        
       async private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            //Activando el progress ring
+            this.prog_ring_star.IsActive = true;
+
             int flag = 0;
             foreach (usuario u in s.user())
             {
                 if (u.asUsername == tbUsername.Text && u.asPassword == tbPassword.Password)
                 {
-                    m.Show();
                     this.Close();
+                    m.Show();                    
                     flag++;
                 }                
             }
