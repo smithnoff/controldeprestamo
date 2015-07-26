@@ -119,7 +119,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItem1" Header="TabItem">
+            <TabItem x:Name="tabItem1" Header="TabItem" Visibility="Collapsed">
                 <Grid Background="#FFE5E5E5">
                     <Grid x:Name="grid2" DataContext="{StaticResource ubicacionsViewSource}" HorizontalAlignment="Left" Margin="218,145,0,0" VerticalAlignment="Top" Width="333">
                         <Grid.ColumnDefinitions>
