@@ -6,9 +6,8 @@
                       Height="350"
                       Width="525" 
                       AllowsTransparency="True" 
-                      WindowStyle="None" 
-                      GlowBrush="{DynamicResource AccentColorBrush}"
-                      WindowStartupLocation="CenterScreen" TitleCaps="False">
+                      WindowStyle="None"                       
+                      WindowStartupLocation="CenterScreen" TitleCaps="False" EnableDWMDropShadow="True">
 
     <Grid>
 
@@ -39,8 +38,9 @@
             <Button x:Name="button" Style="{StaticResource AccentedSquareButtonStyle}" IsDefault="True" Content="Ingresar" HorizontalAlignment="Left" Margin="180,225,0,0" VerticalAlignment="Top" Width="305" Height="45" FontSize="18" Click="Button_Click"/>
 
             <Grid x:Name="progress" HorizontalAlignment="Left" Height="46" Margin="237,294,0,0" VerticalAlignment="Top" Width="174">
-                <Controls:ProgressRing x:Name="prog_ring_star" Height="46" Margin="57,0"   />
+                <Controls:ProgressRing x:Name="prog_ring_star" Height="46" Margin="57,0" IsActive="True" Visibility="Collapsed"   />
             </Grid>
+            <Controls:ProgressRing x:Name="loginProgRing" HorizontalAlignment="Left" Margin="305,270,0,0" VerticalAlignment="Top" IsActive="True" Height="54" Width="38" Visibility="Collapsed"/>
 
         </Grid>
     </Grid>

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo", "CapaModelo\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "Capa_negocio\CapaNegocio.csproj", "{A657B393-77EC-48D1-BF6B-02B830017CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroDemo", "..\..\..\..\Downloads\MahApps.Metro-master\samples\MetroDemo\MetroDemo.csproj", "{56E8080F-FFEB-47CD-ADB9-92245F92565B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{A657B393-77EC-48D1-BF6B-02B830017CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A657B393-77EC-48D1-BF6B-02B830017CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A657B393-77EC-48D1-BF6B-02B830017CEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56E8080F-FFEB-47CD-ADB9-92245F92565B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E8080F-FFEB-47CD-ADB9-92245F92565B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E8080F-FFEB-47CD-ADB9-92245F92565B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56E8080F-FFEB-47CD-ADB9-92245F92565B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

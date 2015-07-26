@@ -47,23 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModeloDB.Designer.cs">
+    <Compile Include="ModeloCobranza.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloDB.edmx</DependentUpon>
+      <DependentUpon>ModeloCobranza.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ModeloDB.edmx">
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="ModeloCobranza.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeloCobranza.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="ModeloDB.edmx.diagram">
-      <DependentUpon>ModeloDB.edmx</DependentUpon>
+    <None Include="ModeloCobranza.edmx.diagram">
+      <DependentUpon>ModeloCobranza.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

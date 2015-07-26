@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +48,7 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="RibbonControlsLibrary">
       <HintPath>..\packages\RibbonControlsLibrary.4.0.0\lib\net40\RibbonControlsLibrary.dll</HintPath>
@@ -78,9 +80,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\New_User.xaml.cs">
-      <DependentUpon>New_User.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -97,14 +96,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MenuPrincipal.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\New_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,12 +126,19 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CapaModelo.Bancos.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.Contratos.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.Cuentas.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.DetallesContratos.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.Interes.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.rolUsuario.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.Ubicacions.datasource" />
+    <None Include="Properties\DataSources\CapaModelo.usuarios.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -152,7 +150,7 @@
     <Resource Include="Images\Device-Printer-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fakes\" />
+    <Resource Include="Images\appbar.delete.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaModelo\CapaModelo.csproj">
@@ -165,10 +163,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\WindowsIcons-license.txt" />
+    <Resource Include="Images\appbar.city.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Entypo-license.txt" />
+    <Resource Include="Images\appbar.user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar.group.png" />
+    <Resource Include="Images\appbar.navigate.next.png" />
+    <Resource Include="Images\appbar.navigate.previous.png" />
+    <Resource Include="Images\appbar.save.png" />
+    <Resource Include="Images\appbar.transform.rotate.counterclockwise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar.page.new.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

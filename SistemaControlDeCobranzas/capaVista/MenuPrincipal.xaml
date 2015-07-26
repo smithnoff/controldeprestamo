@@ -1,42 +1,156 @@
-﻿<Controls:MetroWindow 
-                      x:Class="capaVista.MenuPrincipal"
+﻿<Controls:MetroWindow
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"                                         
                       xmlns:Behaviours="clr-namespace:Fluent.Metro.Behaviours"
-                      Title="Sistema de Cobranza"
-                      Height="350"
-                      Width="525" WindowState="Maximized" WindowStartupLocation="CenterScreen" TitleCaps="False">
-    <Grid>
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CapaModelo="clr-namespace:CapaModelo;assembly=CapaModelo" mc:Ignorable="d" 
+                      x:Class="capaVista.MenuPrincipal"
+                      Title="Sistema de Cobranza"                      
+                      Height="600"
+                      Width="800" WindowStartupLocation="CenterScreen" TitleCaps="False" Loaded="MetroWindow_Loaded" EnableDWMDropShadow="True">
+    <Controls:MetroWindow.Resources>
+        <CollectionViewSource x:Key="usuariosViewSource" d:DesignSource="{d:DesignInstance {x:Type CapaModelo:usuarios}, CreateList=True}"/>
+        <CollectionViewSource x:Key="ubicacionsViewSource" d:DesignSource="{d:DesignInstance {x:Type CapaModelo:Ubicacions}, CreateList=True}"/>
+    </Controls:MetroWindow.Resources>
+    <Grid DataContext="{StaticResource usuariosViewSource}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="MDI">
+                <VisualState x:Name="Defecto"/>
+                <VisualState x:Name="Nuevo">
+                    <Storyboard>
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Selector.IsSelected)" Storyboard.TargetName="tabItem">
+                            <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+                        </BooleanAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Ubicaciones">
+                    <Storyboard>
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Selector.IsSelected)" Storyboard.TargetName="tabItem1">
+                            <DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+                        </BooleanAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="VisualState"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
-        <Fluent:Ribbon Height="189">
-            
-                <!--Backstage-->
-                <Fluent:Ribbon.Menu>
-                    <Fluent:Backstage>
-                    </Fluent:Backstage>
-                </Fluent:Ribbon.Menu>
-                <!--Tabs-->
-                <Fluent:RibbonTabItem Header="Tab">
-                    <Fluent:RibbonGroupBox Header="Group">
-                    <Fluent:Button Name="buttonGreen" Header="Boton1" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
-                    <Fluent:Button Name="buttonGray" Header="Boton2" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
-                    </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="Group2">
-                    <Fluent:Button Name="buttonGreen1" Header="Boton1" Icon="" LargeIcon="Images/Actions-document-save-icon.png" />
-                    <Fluent:Button Name="buttonGray2" SizeDefinition="Middle, Small, Small" Header="Boton2" LargeIcon="Images/Actions-document-save-icon.png" />
-                    <Fluent:Button Name="buttonGray3" SizeDefinition="Middle, Small, Small" Header="Boton3" Icon="Images/Actions-document-save-icon.png" />
+        <Fluent:Ribbon Height="148">
+
+            <!--Backstage-->
+            <Fluent:Ribbon.Menu>
+                <Fluent:Backstage/>
+            </Fluent:Ribbon.Menu>
+            <!--Tabs-->
+            <Fluent:RibbonTabItem Header="Cobranza">
+
+                <Fluent:RibbonGroupBox Header="Clientes">
+                    <Fluent:Button x:Name="btNuevoCliente" ToolTip="Nuevo Cliente" Header="Nuevo" Icon="Images/appbar.user.png" LargeIcon="Images/appbar.user.png" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:GoToStateAction StateName="Nuevo"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                    <Fluent:Button x:Name="btUbicaciones" ToolTip="Ciudades" SizeDefinition="Middle, Small, Small" Header="Ubicaciones" Icon="Images/appbar.city.png" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:GoToStateAction StateName="Ubicaciones"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             <Fluent:RibbonTabItem Header="Tab2">
                 <Fluent:RibbonGroupBox Header="Group">
-                    <Fluent:Button Name="but" Header="Boton1" Icon="" LargeIcon="" />
-                    <Fluent:Button Name="but2" Header="Boton2" Icon="" LargeIcon="" />
+                    <Fluent:Button x:Name="but" Header="Boton1" Icon="" LargeIcon="" />
+                    <Fluent:Button x:Name="but2" Header="Boton2" Icon="" LargeIcon="" />
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
         </Fluent:Ribbon>
+        <Controls:MetroAnimatedTabControl Margin="10,153,10,10" SelectedIndex="{Binding pkUsuariosID}" >
+            <TabItem x:Name="tabItem" Header="TabItem" IsSelected="True" Visibility="Collapsed">
+                <Grid Background="#FFE5E5E5" Margin="0,-2,0,-16">
+                    <Label Content="Apellido:" Grid.Column="0" HorizontalAlignment="Left" Margin="412,125,0,217" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Apellido" x:Name="asApellidoTextBox" HorizontalAlignment="Left" Height="23" Margin="473,125,0,217" Grid.Row="0" Text="{Binding asApellido, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="286"/>
+                    <Label Content="Cedula:" Grid.Column="0" HorizontalAlignment="Left" Margin="38,50,0,292" VerticalAlignment="Center"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cedula" x:Name="asCedulaTextBox" HorizontalAlignment="Left" Height="23" Margin="92,50,0,292" Text="{Binding asCedula, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="187"/>
+                    <Label Content="Nombre:" Grid.Column="0" HorizontalAlignment="Left" Margin="36,125,0,217" VerticalAlignment="Center"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre" x:Name="asNombreTextBox" HorizontalAlignment="Left" Height="23" Margin="92,125,0,217" Text="{Binding asNombre, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="286"/>
+                    <Label Content="" Grid.Column="0" HorizontalAlignment="Left" Margin="38,172,0,170" VerticalAlignment="Center"/>
+                    <Label Content="Ubicacion:" Grid.Column="0" HorizontalAlignment="Left" Margin="22,172,0,170" VerticalAlignment="Center"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ubicacion" x:Name="fkUbicacionIDTextBox" HorizontalAlignment="Left" Height="23" Margin="92,279,0,63" Text="{Binding fkUbicacionID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="187" TextChanged="fkUbicacionIDTextBox_TextChanged" Visibility="Collapsed"/>
+                    <Button x:Name="btSave" VerticalAlignment="Top" ToolTip="Guardar" Margin="0,10,10,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btSave_Click" IsEnabled="False">
+                        <Image Height="32" Width="33" Source="Images/appbar.save.png"/>
+                    </Button>
+                    <Button x:Name="btNext" VerticalAlignment="Top" ToolTip="Adelante" Margin="0,10,154,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btNext_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.navigate.next.png"/>
+                    </Button>
+                    <Button x:Name="btPrevious" VerticalAlignment="Top" ToolTip="Atras" Margin="0,10,202,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btPrevious_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.navigate.previous.png"/>
+                    </Button>
+                    <Button x:Name="btUpdate" VerticalAlignment="Top" ToolTip="Guardar Cambios" Margin="0,10,106,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btUpdate_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.transform.rotate.counterclockwise.png"/>
+                    </Button>
+                    <Button x:Name="btNew" VerticalAlignment="Top" ToolTip="Nuevo Registro" Margin="0,10,58,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btNew_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.page.new.png"/>
+                    </Button>
+                    <Grid x:Name="grid1" DataContext="{StaticResource ubicacionsViewSource}" HorizontalAlignment="Left" Margin="87,172,0,125" VerticalAlignment="Center" Width="209" Height="71">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="asCiudadesComboBox" Grid.Column="1" DisplayMemberPath="asCiudades" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3,3,-78,3" Grid.Row="0" VerticalAlignment="Center" Width="203" SelectionChanged="asCiudadesComboBox_SelectionChanged">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <TextBox x:Name="pkUbicacionIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding pkUbicacionID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="pkUbicacionIDTextBox_TextChanged_1" Visibility="Collapsed"/>
+                    </Grid>
+                    <TextBox x:Name="pkUsuariosIDTextBox" HorizontalAlignment="Left" Height="23" Margin="337,27,0,333" Grid.Row="0" Text="{Binding pkUsuariosID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Visibility="Collapsed"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem1" Header="TabItem">
+                <Grid Background="#FFE5E5E5">
+                    <Grid x:Name="grid2" DataContext="{StaticResource ubicacionsViewSource}" HorizontalAlignment="Left" Margin="218,145,0,0" VerticalAlignment="Top" Width="333">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Ubicaciones:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ciudades" x:Name="asCiudadesTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,3,-138,3" Grid.Row="0" Text="{Binding asCiudades, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="262"/>
+                    </Grid>
+                    <Button x:Name="btSaveU" VerticalAlignment="Top" ToolTip="Guardar" Margin="0,10,10,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btSaveU_Click" IsEnabled="False">
+                        <Image Height="32" Width="33" Source="Images/appbar.save.png"/>
+                    </Button>
+                    <Button x:Name="btNextU" VerticalAlignment="Top" ToolTip="Adelante" Margin="0,10,154,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btNextU_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.navigate.next.png"/>
+                    </Button>
+                    <Button x:Name="btPreviousU" VerticalAlignment="Top" ToolTip="Atras" Margin="0,10,202,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btPreviousU_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.navigate.previous.png"/>
+                    </Button>
+                    <Button x:Name="btUpdateU" VerticalAlignment="Top" ToolTip="Guardar Cambios" Margin="0,10,106,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btUpdateU_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.transform.rotate.counterclockwise.png"/>
+                    </Button>
+                    <Button x:Name="btNewU" VerticalAlignment="Top" ToolTip="Nuevo Registro" Margin="0,10,58,0" Height="43" HorizontalAlignment="Right" Width="43" Click="btNewU_Click">
+                        <Image Height="32" Width="33" Source="Images/appbar.page.new.png"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </Controls:MetroAnimatedTabControl>
     </Grid>
-    
+
 </Controls:MetroWindow>

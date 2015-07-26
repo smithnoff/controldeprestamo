@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbControlCobranzasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="pkBancosID" />
+          </Key>
+          <Property Name="pkBancosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asNombreBanco" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contratos">
+          <Key>
+            <PropertyRef Name="pkContratosID" />
+          </Key>
+          <Property Name="pkContratosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fkUsuariosID" Type="int" Nullable="false" />
+          <Property Name="asNroContrato" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fkInteresID" Type="int" Nullable="false" />
+          <Property Name="fkCuentaID" Type="int" Nullable="false" />
+          <Property Name="FechaContrato" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="pkCuentaID" />
+          </Key>
+          <Property Name="pkCuentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asNroCuenta" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fkUsuarioID" Type="int" Nullable="false" />
+          <Property Name="fkBancoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallesContratos">
+          <Key>
+            <PropertyRef Name="pkDetallesID" />
+          </Key>
+          <Property Name="pkDetallesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fkContratosID" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Interes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaLiquidacion" Type="int" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+          <Property Name="asDias" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asMontoVencido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asMontoCobrado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asAbonoCapital" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaCobro" Type="datetime" Nullable="false" />
+          <Property Name="asSaldoPendiente" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Interes">
+          <Key>
+            <PropertyRef Name="pkInteresID" />
+          </Key>
+          <Property Name="pkInteresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asPorcentaje" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rolUsuario">
+          <Key>
+            <PropertyRef Name="pkRolUsuarioID" />
+          </Key>
+          <Property Name="pkRolUsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asDescripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ubicacions">
+          <Key>
+            <PropertyRef Name="pkUbicacionID" />
+          </Key>
+          <Property Name="pkUbicacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asCiudades" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="pkUsuariosID" />
+          </Key>
+          <Property Name="pkUsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asCedula" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asNombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asApellido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="asUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="asPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fkRolUsuarioID" Type="int" />
+          <Property Name="fkUbicacionID" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BancoCuenta">
+          <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="pkBancosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="fkBancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContratosDetallesContrato">
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="1" />
+          <End Role="DetallesContratos" Type="Self.DetallesContratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="pkContratosID" />
+            </Principal>
+            <Dependent Role="DetallesContratos">
+              <PropertyRef Name="fkContratosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaContratos">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="pkCuentaID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkCuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InteresContratos">
+          <End Role="Interes" Type="Self.Interes" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interes">
+              <PropertyRef Name="pkInteresID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkInteresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacionusuario">
+          <End Role="Ubicacions" Type="Self.Ubicacions" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacions">
+              <PropertyRef Name="pkUbicacionID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkUbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioContratos">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="pkUsuariosID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkUsuariosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioCuenta">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="pkUsuariosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="fkUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_rolUsuario1">
+          <End Role="rolUsuario" Type="Self.rolUsuario" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolUsuario">
+              <PropertyRef Name="pkRolUsuarioID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkRolUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbControlCobranzasModelStoreContainer">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contratos" EntityType="Self.Contratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallesContratos" EntityType="Self.DetallesContratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interes" EntityType="Self.Interes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rolUsuario" EntityType="Self.rolUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubicacions" EntityType="Self.Ubicacions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BancoCuenta" Association="Self.FK_BancoCuenta">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContratosDetallesContrato" Association="Self.FK_ContratosDetallesContrato">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="DetallesContratos" EntitySet="DetallesContratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaContratos" Association="Self.FK_CuentaContratos">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InteresContratos" Association="Self.FK_InteresContratos">
+            <End Role="Interes" EntitySet="Interes" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacionusuario" Association="Self.FK_Ubicacionusuario">
+            <End Role="Ubicacions" EntitySet="Ubicacions" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioContratos" Association="Self.FK_usuarioContratos">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioCuenta" Association="Self.FK_usuarioCuenta">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_rolUsuario1" Association="Self.FK_usuarios_rolUsuario1">
+            <End Role="rolUsuario" EntitySet="rolUsuario" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbControlCobranzasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="pkBancosID" />
+          </Key>
+          <Property Name="pkBancosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asNombreBanco" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK_BancoCuenta" FromRole="Bancos" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="Contratos">
+          <Key>
+            <PropertyRef Name="pkContratosID" />
+          </Key>
+          <Property Name="pkContratosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkUsuariosID" Type="Int32" Nullable="false" />
+          <Property Name="asNroContrato" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fkInteresID" Type="Int32" Nullable="false" />
+          <Property Name="fkCuentaID" Type="Int32" Nullable="false" />
+          <Property Name="FechaContrato" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DetallesContratos" Relationship="Self.FK_ContratosDetallesContrato" FromRole="Contratos" ToRole="DetallesContratos" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK_CuentaContratos" FromRole="Contratos" ToRole="Cuentas" />
+          <NavigationProperty Name="Interes" Relationship="Self.FK_InteresContratos" FromRole="Contratos" ToRole="Interes" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarioContratos" FromRole="Contratos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="pkCuentaID" />
+          </Key>
+          <Property Name="pkCuentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asNroCuenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fkUsuarioID" Type="Int32" Nullable="false" />
+          <Property Name="fkBancoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bancos" Relationship="Self.FK_BancoCuenta" FromRole="Cuentas" ToRole="Bancos" />
+          <NavigationProperty Name="Contratos" Relationship="Self.FK_CuentaContratos" FromRole="Cuentas" ToRole="Contratos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarioCuenta" FromRole="Cuentas" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="DetallesContratos">
+          <Key>
+            <PropertyRef Name="pkDetallesID" />
+          </Key>
+          <Property Name="pkDetallesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkContratosID" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Interes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaLiquidacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="asDias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asMontoVencido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asMontoCobrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asAbonoCapital" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCobro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="asSaldoPendiente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Contratos" Relationship="Self.FK_ContratosDetallesContrato" FromRole="DetallesContratos" ToRole="Contratos" />
+        </EntityType>
+        <EntityType Name="Interes">
+          <Key>
+            <PropertyRef Name="pkInteresID" />
+          </Key>
+          <Property Name="pkInteresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asPorcentaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contratos" Relationship="Self.FK_InteresContratos" FromRole="Interes" ToRole="Contratos" />
+        </EntityType>
+        <EntityType Name="rolUsuario">
+          <Key>
+            <PropertyRef Name="pkRolUsuarioID" />
+          </Key>
+          <Property Name="pkRolUsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_rolUsuario1" FromRole="rolUsuario" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ubicacions">
+          <Key>
+            <PropertyRef Name="pkUbicacionID" />
+          </Key>
+          <Property Name="pkUbicacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asCiudades" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_Ubicacionusuario" FromRole="Ubicacions" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="pkUsuariosID" />
+          </Key>
+          <Property Name="pkUsuariosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asCedula" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fkRolUsuarioID" Type="Int32" />
+          <Property Name="fkUbicacionID" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Contratos" Relationship="Self.FK_usuarioContratos" FromRole="usuarios" ToRole="Contratos" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK_usuarioCuenta" FromRole="usuarios" ToRole="Cuentas" />
+          <NavigationProperty Name="rolUsuario" Relationship="Self.FK_usuarios_rolUsuario1" FromRole="usuarios" ToRole="rolUsuario" />
+          <NavigationProperty Name="Ubicacions" Relationship="Self.FK_Ubicacionusuario" FromRole="usuarios" ToRole="Ubicacions" />
+        </EntityType>
+        <Association Name="FK_BancoCuenta">
+          <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="pkBancosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="fkBancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContratosDetallesContrato">
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="1" />
+          <End Role="DetallesContratos" Type="Self.DetallesContratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="pkContratosID" />
+            </Principal>
+            <Dependent Role="DetallesContratos">
+              <PropertyRef Name="fkContratosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaContratos">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="pkCuentaID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkCuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InteresContratos">
+          <End Role="Interes" Type="Self.Interes" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interes">
+              <PropertyRef Name="pkInteresID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkInteresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioContratos">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="pkUsuariosID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="fkUsuariosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioCuenta">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="pkUsuariosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="fkUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_rolUsuario1">
+          <End Role="rolUsuario" Type="Self.rolUsuario" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolUsuario">
+              <PropertyRef Name="pkRolUsuarioID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkRolUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacionusuario">
+          <End Role="Ubicacions" Type="Self.Ubicacions" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacions">
+              <PropertyRef Name="pkUbicacionID" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="fkUbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCobranzasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" />
+          <EntitySet Name="Contratos" EntityType="Self.Contratos" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
+          <EntitySet Name="DetallesContratos" EntityType="Self.DetallesContratos" />
+          <EntitySet Name="Interes" EntityType="Self.Interes" />
+          <EntitySet Name="rolUsuario" EntityType="Self.rolUsuario" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Ubicacions" EntityType="Self.Ubicacions" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="FK_BancoCuenta" Association="Self.FK_BancoCuenta">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContratosDetallesContrato" Association="Self.FK_ContratosDetallesContrato">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="DetallesContratos" EntitySet="DetallesContratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaContratos" Association="Self.FK_CuentaContratos">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InteresContratos" Association="Self.FK_InteresContratos">
+            <End Role="Interes" EntitySet="Interes" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioContratos" Association="Self.FK_usuarioContratos">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioCuenta" Association="Self.FK_usuarioCuenta">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_rolUsuario1" Association="Self.FK_usuarios_rolUsuario1">
+            <End Role="rolUsuario" EntitySet="rolUsuario" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacionusuario" Association="Self.FK_Ubicacionusuario">
+            <End Role="Ubicacions" EntitySet="Ubicacions" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbControlCobranzasModelStoreContainer" CdmEntityContainer="dbCobranzasEntities">
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.Bancos">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="pkBancosID" ColumnName="pkBancosID" />
+                <ScalarProperty Name="asNombreBanco" ColumnName="asNombreBanco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contratos">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.Contratos">
+              <MappingFragment StoreEntitySet="Contratos">
+                <ScalarProperty Name="pkContratosID" ColumnName="pkContratosID" />
+                <ScalarProperty Name="fkUsuariosID" ColumnName="fkUsuariosID" />
+                <ScalarProperty Name="asNroContrato" ColumnName="asNroContrato" />
+                <ScalarProperty Name="fkInteresID" ColumnName="fkInteresID" />
+                <ScalarProperty Name="fkCuentaID" ColumnName="fkCuentaID" />
+                <ScalarProperty Name="FechaContrato" ColumnName="FechaContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuentas">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.Cuentas">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="pkCuentaID" ColumnName="pkCuentaID" />
+                <ScalarProperty Name="asNroCuenta" ColumnName="asNroCuenta" />
+                <ScalarProperty Name="fkUsuarioID" ColumnName="fkUsuarioID" />
+                <ScalarProperty Name="fkBancoID" ColumnName="fkBancoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesContratos">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.DetallesContratos">
+              <MappingFragment StoreEntitySet="DetallesContratos">
+                <ScalarProperty Name="pkDetallesID" ColumnName="pkDetallesID" />
+                <ScalarProperty Name="fkContratosID" ColumnName="fkContratosID" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Interes" ColumnName="Interes" />
+                <ScalarProperty Name="FechaLiquidacion" ColumnName="FechaLiquidacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="asDias" ColumnName="asDias" />
+                <ScalarProperty Name="asMontoVencido" ColumnName="asMontoVencido" />
+                <ScalarProperty Name="asMontoCobrado" ColumnName="asMontoCobrado" />
+                <ScalarProperty Name="asAbonoCapital" ColumnName="asAbonoCapital" />
+                <ScalarProperty Name="FechaCobro" ColumnName="FechaCobro" />
+                <ScalarProperty Name="asSaldoPendiente" ColumnName="asSaldoPendiente" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interes">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.Interes">
+              <MappingFragment StoreEntitySet="Interes">
+                <ScalarProperty Name="pkInteresID" ColumnName="pkInteresID" />
+                <ScalarProperty Name="asPorcentaje" ColumnName="asPorcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolUsuario">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.rolUsuario">
+              <MappingFragment StoreEntitySet="rolUsuario">
+                <ScalarProperty Name="pkRolUsuarioID" ColumnName="pkRolUsuarioID" />
+                <ScalarProperty Name="asDescripcion" ColumnName="asDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacions">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.Ubicacions">
+              <MappingFragment StoreEntitySet="Ubicacions">
+                <ScalarProperty Name="pkUbicacionID" ColumnName="pkUbicacionID" />
+                <ScalarProperty Name="asCiudades" ColumnName="asCiudades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="dbControlCobranzasModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="pkUsuariosID" ColumnName="pkUsuariosID" />
+                <ScalarProperty Name="asCedula" ColumnName="asCedula" />
+                <ScalarProperty Name="asNombre" ColumnName="asNombre" />
+                <ScalarProperty Name="asApellido" ColumnName="asApellido" />
+                <ScalarProperty Name="asUsername" ColumnName="asUsername" />
+                <ScalarProperty Name="asPassword" ColumnName="asPassword" />
+                <ScalarProperty Name="fkRolUsuarioID" ColumnName="fkRolUsuarioID" />
+                <ScalarProperty Name="fkUbicacionID" ColumnName="fkUbicacionID" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

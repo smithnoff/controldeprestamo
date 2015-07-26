@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b06fe23fd7e4f14b8fd513bbac61f89" Name="Diagram1">
+        <EntityTypeShape EntityType="dbControlCobranzasModel.Bancos" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.Contratos" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.Cuentas" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.DetallesContratos" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.Interes" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.rolUsuario" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.Ubicacions" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbControlCobranzasModel.usuarios" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_BancoCuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_ContratosDetallesContrato" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_CuentaContratos" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_InteresContratos" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_usuarioContratos" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_usuarioCuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_usuarios_rolUsuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbControlCobranzasModel.FK_Ubicacionusuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
